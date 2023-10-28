@@ -1,0 +1,72 @@
+.layer {
+  .menu-item-top {
+    padding-bottom: 17px;
+    margin-bottom: 17px;
+    border-bottom: 1px solid rgba(94, 111, 138, 0.5);
+    h4 {
+      margin-bottom: 10px;
+    }
+  }
+  .layer-area {
+    .layer-name {
+      margin-bottom: 14px;
+      input {
+        background: #2f303b;
+        border-radius: 3px;
+        padding: 7px 10px 7px 10px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 18px;
+        color: #ffffff;
+        width: 100%;
+      }
+    }
+    .layers {
+      .eachlayer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 14px 4px 8px;
+        user-select: none;
+        cursor: pointer;
+        &:hover {
+          background: rgba(73, 77, 94, 0.7);
+          border-radius: 3px;
+          .left-layer {
+            .drag-icon {
+              visibility: visible;
+            }
+          }
+        }
+        &:not(:first-child) {
+          margin-top: 7px;
+        }
+        .left-layer {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .drag-icon {
+            visibility: hidden;
+            margin-bottom: 2px;
+          }
+          .layer-icon {
+          }
+          .layer-text {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 24px;
+            color: #b6bbcd;
+          }
+        }
+        .right-layer {
+          .layer-lock-icon {
+            svg {
+            }
+          }
+        }
+      }
+    }
+  }
+}

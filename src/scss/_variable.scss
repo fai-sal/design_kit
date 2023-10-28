@@ -1,0 +1,28 @@
+$primary-color: #1c1e24;
+$secondary-color: #353843;
+$white: #fff;
+$design-btn-bg: #3e64de;
+$sidebar-font-color: #bac0d2;
+$sidebar-active-indicator: #3e64de;
+
+// Display Property
+
+body {
+    //colors
+    --black: #000;
+    --black-rgb: 0, 0, 0;
+    --white: #ffffff;
+    --white-rgb: 255, 255, 255;
+    --toolbar-bg: #ffffff;
+    --selection-a: #0cf5ff;
+    --selection-b: #6180e4;
+    //flex
+
+    --d-flex: flex;
+    --align-items-center: center;
+    --justify-content-center: center;
+    --justify-content-around: space-around;
+    --justify-content-between: space-between;
+    --justify-content-end: flex-end;
+}
+

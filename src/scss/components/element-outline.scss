@@ -1,0 +1,145 @@
+.tcb-element-outline {
+  border: 2px solid var(--selection-b);
+  background-color: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  .element-toolbar {
+    position: absolute;
+    display: flex;
+    align-content: center;
+    padding: 5px 10px;
+    left: -1px;
+    top: -60px;
+    z-index: 99;
+    height: 50px;
+    color: #fff;
+    background: #1c1e24;
+    border-radius: 6px;
+    pointer-events: none;
+    > div {
+      @include flexCenter;
+      padding: 5px 10px;
+      &:not(:last-child) {
+        border-right: 1px solid #454751;
+      }
+    }
+    .element-info {
+      pointer-events: auto;
+      border-right: 1px solid black;
+    }
+    .richtext-formats {
+      display: flex;
+      pointer-events: auto;
+      .tcb-richtext-format {
+        padding: 0px 2px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.active {
+          background-color: #494d5e;
+          opacity: 0.7;
+          border-radius: 6px;
+        }
+      }
+    }
+    .richtext-controls {
+      .tcb-colorpicker.tcb_control,
+      .tcb-text-control {
+        pointer-events: auto;
+      }
+    }
+    .element-common-controls {
+      pointer-events: auto;
+    }
+
+    .element-colors {
+      display: flex;
+      border-right: 1px solid #454751;
+      pointer-events: auto;
+
+      .#{classPrefix}-element-color-bar-circle {
+        width: 18px;
+        height: 18px;
+        background: #f4f4f4;
+        border: 1px solid #494d5e;
+        border-radius: 50%;
+        margin-left: 2px;
+        margin: 2px;
+        cursor: pointer;
+      }
+    }
+    .element-info {
+      border-right: 1px solid #454751;
+    }
+    .element-common-controls {
+      pointer-events: auto;
+    }
+  }
+  .inline-height-width-control-wrapper {
+    pointer-events: none !important;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    .inline-height-width-control {
+      // width: 8px;
+      // height: 8px;
+      max-height: 100%;
+      max-width: 100%;
+      border-radius: 10px;
+      background-color: #fff;
+      border: 2px solid var(--selection-b);
+      pointer-events: all;
+      position: absolute;
+      pointer-events: auto;
+      &.inline-height-width-control-left {
+        top: 0;
+        bottom: 0;
+        left: -3.5px;
+        margin: auto;
+        cursor: ew-resize;
+        height: 20px;
+        width: 6px;
+      }
+      &.inline-height-width-control-right {
+        top: 0;
+        bottom: 0;
+        right: -3.5px;
+        margin: auto;
+        cursor: ew-resize;
+        height: 20px;
+        width: 6px;
+      }
+      &.inline-height-width-control-top {
+        left: 0;
+        right: 0;
+        top: -3.5px;
+        margin: auto;
+        cursor: ns-resize;
+        height: 6px;
+        width: 20px;
+      }
+      &.inline-height-width-control-bottom {
+        left: 0;
+        right: 0;
+        bottom: -3.5px;
+        margin: auto;
+        cursor: ns-resize;
+        height: 6px;
+        width: 20px;
+      }
+    }
+  }
+}

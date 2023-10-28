@@ -1,0 +1,61 @@
+.shapes {
+  .menu-item-top {
+    margin-bottom: 11px;
+  }
+  .shape-area {
+    .shape-template {
+      &:not(:first-child) {
+        margin-top: 25px;
+      }
+      .shape-template-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 24px;
+        }
+        .link {
+          font-style: normal;
+          font-weight: normal;
+          font-size: 13px;
+          line-height: 18px;
+          color: #abadb6;
+          cursor: pointer;
+          &:hover {
+            color: #fff;
+            svg {
+              path {
+                fill: #fff;
+              }
+            }
+          }
+          svg {
+            margin-left: 3px;
+            path {
+              fill: #abadb6;
+            }
+          }
+        }
+      }
+      .shape-templates {
+        display: grid;
+        grid-template-columns: repeat(3, 76px);
+        grid-auto-rows: 76px;
+        gap: 15px 14px;
+        margin-top: 13px;
+        .single-shape {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 14px;
+          background: linear-gradient(180deg, #4c5163 0%, #454959 100%);
+          border: 1px solid #54596c;
+          box-sizing: border-box;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.elements {
+	.elements-list {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: 15px;
+		column-gap: 15px;
+		.element-list-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background: linear-gradient(180deg, #4c5163 0%, #454959 100%);
+			border: 1px solid #54596c;
+			box-sizing: border-box;
+			border-radius: 6px;
+			padding: 20px 10px;
+			flex: 0 0 119px;
+			height: 110px;
+			cursor: move;
+			p {
+				font-style: normal;
+				font-weight: normal;
+				font-size: 13px;
+				line-height: 16px;
+				padding-top: 10px;
+				margin: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.backdrops {
+	.backdrops-templates {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: 15px;
+		column-gap: 15px;
+		.backdrops-template {
+			flex: 0 0 119px;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
