@@ -5,7 +5,7 @@ import classNames from "classnames"
  */
 import Docker from './docker';
 import Canvas from "./canvas";
-import Header from "./canvas-header";
+import CanvasHeader from "./canvas-header";
 
 const Builder: FC = () => {
 	const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
@@ -19,9 +19,8 @@ const Builder: FC = () => {
 				toggleSidebar={toggleSidebar}
 				isCollapsed={isCollapsed}
 			/>
-
 			<div className="designer-toolkit-content">
-				<Header />
+				<CanvasHeader />
 				<Canvas />
 			</div>
 		</div>

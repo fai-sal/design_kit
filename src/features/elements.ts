@@ -3,16 +3,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 /**
  * Initial State of elements
  */
-import { Element } from "../types"
+import { ElementInterface } from "../types"
 
-const initialState:Element[] = [];
+const initialState:ElementInterface[] = [];
 
 
 export const elementSlice = createSlice({
 	name: 'elements',
 	initialState,
 	reducers: {
-		addShape: (state, action: PayloadAction<Element>) => {
+		addShape: (state, action: PayloadAction<ElementInterface>) => {
 			state.push(action.payload);
 		},
 	}

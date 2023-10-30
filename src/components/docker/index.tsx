@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import Shapes from './shapes';
 import Backdrops from './backdrops';
 
-const Docker: FC<
-	{
-		isCollapsed: boolean,
-		toggleSidebar: () => void
-	}> = (props) => {
+interface DockerProps {
+	isCollapsed: boolean,
+	toggleSidebar: () => void
+}
+const Docker: FC<DockerProps> = (props) => {
 
 		const {
 			toggleSidebar,
@@ -18,7 +18,7 @@ const Docker: FC<
 		const topMenu = useRef<HTMLDivElement>(null);
 
 		const [menuList, setMenuList] = useState({
-			activeMenuItem: 'shapes',
+			activeMenuItem: 'backdrops',
 			topMenulists: [
 				{
 					'name': 'Shapes',
@@ -69,9 +69,10 @@ const Docker: FC<
 							</span>
 							{menuList.topMenulists.map((item) => {
 								return (
-									<li key={item.id}
-										className={classnames({ 'active': menuList.activeMenuItem === item.id })}
+									<li 
+										key={item.id}
 										onClick={sidebarMenuActive(item.id)}
+										className={classnames({ 'active': menuList.activeMenuItem === item.id })}
 									>
 										<a href="">
 											{item.svg}

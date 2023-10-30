@@ -16,7 +16,7 @@ import {
 } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
 
-//persist design
+//persist
 const persistConfig = {
 	key: 'canvas',
 	storage

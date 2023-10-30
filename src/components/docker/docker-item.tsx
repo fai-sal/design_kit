@@ -16,7 +16,7 @@ const DockerItem: FC<{
 	isBackdrop?: boolean,
 }> = (props) => {
 	const {
-		shape,
+		shape='',
 		backdrop,
 		isBackdrop
 	} = props;
@@ -54,23 +54,16 @@ const DockerItem: FC<{
 		},
 	});
 
-	if (props.isBackdrop) {
-		return (
-			<div className="backdrop-list-item" ref={drag}>
+	return (
+		<div className="element-list-item" ref={drag}>
+			{
+				isBackdrop ? 
 				<img src={props.backdrop} />
-			</div>
-		)
-	}
-
-	if (typeof shape !== 'undefined') {
-		return (
-			<div className="element-list-item" ref={drag}>
-				{
-					SHAPES[shape].svg
-				}
-			</div>
-		);
-	}
+				: 
+				SHAPES[shape as keyof typeof SHAPES].svg
+			}
+		</div>
+	)
 
 }
 

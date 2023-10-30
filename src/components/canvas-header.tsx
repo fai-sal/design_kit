@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const Header:FC = () => {
+const CanvasHeader:FC = () => {
 	return (
 		<div className="header">
 			<h3 className="header-logo">Drag & Drop Design Toolkit</h3>
@@ -8,4 +8,4 @@ const Header:FC = () => {
 	);
 };
 
-export default Header;
+export default CanvasHeader;
