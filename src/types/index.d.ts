@@ -1,6 +1,4 @@
-import React from "react"
-
-export interface Element {
+export interface ElementInterface {
 	name: string,
 	title: string,
 	icon: string

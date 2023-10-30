@@ -39,56 +39,31 @@ const Canvas:FC = () => {
 	}
 
 
-	// const getCanvasDocumentRef = (instance) => {
-	// 	if (instance) {
-	// 		const node = findDOMNode(instance);
-	// 		setCanvasDocument(node);
-	// 	}
-	// };
-
-	/**
-	 * Set Loading
-	 */
-	const updateLoadingState = () => {
-		setIsLoading((isLoading) => !isLoading);
-	};
-
-	    /**
-     * update element attributes
-     * @param {*} data 
-     */
-		const setAttributes = (data) => {
-			console.log('upadte attribute : ',data)
-		}
-
 	return (
 		<div className="content-body" ref={canvasWrapper}>
-			<div>
-			{/* <div ref={getCanvasDocumentRef}> */}
-				<div ref={drop} className="toolkit-editor is-draging-border" id="toolkit-editor" style={style}>
-					{isLoading ? (
-						<Loader />
-					) :
-						<>
-							{
-								elements.map((element, index) => {
-									return (
-										<Element data={element} key={index}/>
-									)
-								})
-							}
-							{/* {
-								elements.map((element, index) => {
-									return (
-										<WithDnD key={index} id={Math.random()*100} position={element.attributes.position} size={element.attributes.size} setAttributes={setAttributes}>
-											<Item data={element} />
-										</WithDnD>
-									)
-								})
-							} */}
-						</>
-					}
-				</div>
+			<div ref={drop} className="toolkit-editor is-draging-border" id="toolkit-editor" style={style}>
+				{isLoading ? (
+					<Loader />
+				) :
+					<>
+						{
+							elements.map((element, index) => {
+								return (
+									<Element data={element} key={index}/>
+								)
+							})
+						}
+						{/* {
+							elements.map((element, index) => {
+								return (
+									<WithDnD key={index} id={Math.random()*100} position={element.attributes.position} size={element.attributes.size} setAttributes={setAttributes}>
+										<Item data={element} />
+									</WithDnD>
+								)
+							})
+						} */}
+					</>
+				}
 			</div>
 		</div>
 	);

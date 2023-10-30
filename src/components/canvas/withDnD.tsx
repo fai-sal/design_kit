@@ -8,7 +8,7 @@ const style = {
 
 const WithDnD: FC = ({ id, position = {}, size = {}, children, setAttributes }) => {
 
-	const [{ isDragging }, drag] = useDrag(() => ({
+	const [_, drag] = useDrag(() => ({
 		type: DRAGTYPES.MOVE_ELEMENT,
 		item: { dragType: DRAGTYPES.MOVE_ELEMENT, id, ...position },
 		collect: (monitor) => ({
