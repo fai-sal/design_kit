@@ -1,10 +1,18 @@
 export interface ElementInterface {
+	type?: string
 	name: string,
-	title: string,
-	icon: string
 	category: string,
-	attributes: object,
-	Component: string
+	attributes: {
+		position: {
+			X: number,
+			Y: number,
+		}
+	},
+	id: string,
+}
+export interface BackdropInterface {
+	backdrop: string,
+	category: string,
 }
 
 export interface Design {
@@ -17,6 +25,6 @@ export interface ElementCard {
 	title: string,
 	category: string,
 	attributes: object,
-    Component: React.JSX,
-    icon: React.JSX,
+	Component: React.JSX,
+	icon: React.JSX,
 }

@@ -1,6 +1,6 @@
 import { useState, useRef, FC } from "react";
 // import { findDOMNode } from "react-dom";
-import { useDrop } from "react-dnd";
+import { useDrop, DropTargetMonitor } from 'react-dnd';
 // import WithDnD from './withDnD';
 import { DRAGTYPES } from "../../configs/constants";
 import Element from "./element"
@@ -9,6 +9,7 @@ import {
 } from "../../utils";
 import { useAppSelector } from "../../store/hooks"
 import Loader from "../design-loader";
+import { ElementInterface } from "../../types"
 
 
 const Canvas:FC = () => {
@@ -19,14 +20,15 @@ const Canvas:FC = () => {
 
 	const [_, drop] = useDrop(() => ({
 		accept: [DRAGTYPES.ADD_ELEMENT, DRAGTYPES.MOVE_ELEMENT, "ADD_BACKDROP"],
-		// Props to collect
 		collect: (monitor) => ({
 			isOver: monitor.isOver(),
 			canDrop: monitor.canDrop(),
-			// isOverCurrent: monitor.isOver({ shallow: true }),
 		}),
-		drop: (item, monitor) => {
-			return dropHandler(item, monitor);
+		drop: (item : ElementInterface, monitor : DropTargetMonitor) => {
+			if(item.type !== undefined) {
+				return dropHandler(item, monitor);
+			}
+
 		},
 	}));
 
@@ -47,9 +49,9 @@ const Canvas:FC = () => {
 				) :
 					<>
 						{
-							elements.map((element, index) => {
+							elements.map((element) => {
 								return (
-									<Element data={element} key={index}/>
+									<Element data={element} key={element.id}/>
 								)
 							})
 						}
