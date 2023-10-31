@@ -1,7 +1,7 @@
 import { FC } from "react"
 import classnames from 'classnames';
 import DockerItem from './docker-item'
-import shapeNames from "../../shapes";
+import shapeNames from "../../elements/shapes";
 
 const Shapes: FC<{
 	isActive: boolean

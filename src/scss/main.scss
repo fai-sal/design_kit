@@ -274,11 +274,22 @@
 }
 
 .toolkit-editor {
+
 	.element {
 		border: 1px solid green;
 		cursor: move;
 		position: absolute;
 		left: 0;
 		top: 0;
+	}
+
+	&.has-backdrop {
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	svg {
+		width: inherit;
+		height: inherit;
 	}
 }

@@ -6,6 +6,10 @@ export interface ElementInterface {
 		position: {
 			X: number,
 			Y: number,
+		},
+		size: {
+			width: string,
+			height: string,
 		}
 	},
 	id: string,
