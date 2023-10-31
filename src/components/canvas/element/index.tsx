@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import { SHAPES } from "../../../elements/shapes"
 import { ElementInterface } from "../../../types"
 
@@ -13,9 +13,10 @@ const Element: FC<{
 			height: data.attributes.size.height,
 		}
 	}
+	const style = useMemo(() => generateStyle(), [data.attributes]);
 
 	return (
-		<div className="element" style={generateStyle()}>
+		<div className="element" style={style}>
 			{SHAPES[data.name as keyof typeof SHAPES].svg}
 		</div>
 	)
