@@ -17,7 +17,7 @@ const Canvas: FC = () => {
 	const canvasWrapper = useRef(null);
 	const elements = useAppSelector((state) => state.canvas.elements)
 	const design = useAppSelector((state) => state.canvas.design)
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading] = useState(false);
 
 	const [_, drop] = useDrop(() => ({
 		accept: [DRAGTYPES.ADD_ELEMENT, DRAGTYPES.MOVE_ELEMENT, "ADD_BACKDROP"],
