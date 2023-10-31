@@ -5,7 +5,7 @@ import { DRAGTYPES } from "../../configs/constants";
 import { addShape } from "../../features/elements";
 import { addBackdrop } from "../../features/design";
 import { useAppDispatch } from "../../store/hooks";
-import { SHAPES } from "../../shapes";
+import { SHAPES } from "../../elements/shapes";
 import { getUniqueId } from "../../utils";
 import { ElementInterface } from "../../types";
 
@@ -40,6 +40,9 @@ const DockerItem: FC<{
 			...(props.shape && {
 				category: "shape",
 				name: shape,
+				attributes: {
+					size: SHAPES[shape as keyof typeof SHAPES].size
+				}
 			}),
 			...(isBackdrop && {
 				backdrop,

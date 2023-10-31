@@ -1,6 +1,7 @@
 import { useState, useRef, FC } from "react";
 // import { findDOMNode } from "react-dom";
 import { useDrop, DropTargetMonitor } from 'react-dnd';
+import classNames from "classnames";
 // import WithDnD from './withDnD';
 import { DRAGTYPES } from "../../configs/constants";
 import Element from "./element"
@@ -12,7 +13,7 @@ import Loader from "../design-loader";
 import { ElementInterface } from "../../types"
 
 
-const Canvas:FC = () => {
+const Canvas: FC = () => {
 	const canvasWrapper = useRef(null);
 	const elements = useAppSelector((state) => state.canvas.elements)
 	const design = useAppSelector((state) => state.canvas.design)
@@ -24,26 +25,29 @@ const Canvas:FC = () => {
 			isOver: monitor.isOver(),
 			canDrop: monitor.canDrop(),
 		}),
-		drop: (item : ElementInterface, monitor : DropTargetMonitor) => {
-			if(item.type !== undefined) {
+		drop: (item: ElementInterface, monitor: DropTargetMonitor) => {
+			if (item.type !== undefined) {
 				return dropHandler(item, monitor);
 			}
 
 		},
 	}));
 
-	let style:any = {};
+	let style: any = {};
 
 	if (design.backdrop) {
 		style.backgroundImage = `url(${design.backdrop})`;
-		style.backgroundRepeat = "no-repeat";
-		style.backgroundSize = "cover";
 	}
 
+	const editoClasses = classNames(
+		"toolkit-editor",
+		"is-draging-border",
+		{ "has-backdrop": !!design.backdrop }
+	)
 
 	return (
 		<div className="content-body" ref={canvasWrapper}>
-			<div ref={drop} className="toolkit-editor is-draging-border" id="toolkit-editor" style={style}>
+			<div ref={drop} className={editoClasses} id="toolkit-editor" style={style}>
 				{isLoading ? (
 					<Loader />
 				) :
@@ -51,7 +55,7 @@ const Canvas:FC = () => {
 						{
 							elements.map((element) => {
 								return (
-									<Element data={element} key={element.id}/>
+									<Element data={element} key={element.id} />
 								)
 							})
 						}
