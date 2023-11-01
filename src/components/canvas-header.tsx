@@ -1,3 +1,6 @@
+/**
+ * External dependencies
+ */
 import { FC } from "react";
 
 const CanvasHeader:FC = () => {

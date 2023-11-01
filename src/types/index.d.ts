@@ -1,12 +1,15 @@
+
+export type Position = {
+	X: number,
+	Y: number,
+}
+
 export interface ElementInterface {
 	type?: string
 	name: string,
 	category: string,
 	attributes: {
-		position: {
-			X: number,
-			Y: number,
-		},
+		position: Position,
 		size: {
 			width: string,
 			height: string,

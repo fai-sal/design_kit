@@ -1,5 +1,12 @@
+/**
+ * External dependencies
+ */
 import { FC } from "react";
 import classNames from "classnames";
+
+/**
+ * Internal dependencies
+ */
 import DockerItem from './docker-item'
 
 const BACKDROPS = [

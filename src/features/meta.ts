@@ -6,7 +6,9 @@ const initialState: {
 	name: 'Design Name',
 };
 
-
+/**
+ * Handles meta info, eg: name
+ */
 export const metaSlice = createSlice({
 	name: 'meta',
 	initialState,

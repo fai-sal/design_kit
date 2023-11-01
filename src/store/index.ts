@@ -1,9 +1,8 @@
+/**
+ * External dependencies
+ */
 import { configureStore } from '@reduxjs/toolkit';
-import elementsReducer from '../features/elements'
-import designReducer from '../features/design';
-import metaReducer from '../features/meta';
 import { combineReducers } from 'redux'
-
 import {
 	persistStore,
 	FLUSH,
@@ -16,7 +15,14 @@ import {
 } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
 
-//persist
+/**
+ * Internal dependencies
+ */
+import elementsReducer from '../features/elements'
+import designReducer from '../features/design';
+import metaReducer from '../features/meta';
+
+//persist config
 const persistConfig = {
 	key: 'canvas',
 	storage

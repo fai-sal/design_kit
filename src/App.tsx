@@ -3,7 +3,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 /**
  * Internal dependencies
  */
-import { Builder } from './components';
+import Builder from './components';
 
 function App() {
 	return (

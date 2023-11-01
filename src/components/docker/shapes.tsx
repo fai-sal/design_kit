@@ -1,5 +1,12 @@
+/**
+ * External dependencies
+ */
 import { FC } from "react"
 import classnames from 'classnames';
+
+/**
+ * Internal dependencies
+ */
 import DockerItem from './docker-item'
 import shapeNames from "../../elements/shapes";
 

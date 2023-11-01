@@ -1,5 +1,12 @@
+/**
+ * External dependencies
+ */
 import React, { FC } from "react";
 import { useDrag, DragSourceMonitor } from "react-dnd";
+
+/**
+ * Internal dependencies
+ */
 import { deepcopy } from "../../utils";
 import { DRAGTYPES } from "../../configs/constants";
 import { addShape } from "../../features/elements";

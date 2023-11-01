@@ -1,5 +1,12 @@
+/**
+ * External dependencies
+ */
 import { useState, useRef, FC } from "react";
 import classnames from 'classnames';
+
+/**
+ * Internal dependencies
+ */
 import Shapes from './shapes';
 import Backdrops from './backdrops';
 
@@ -18,7 +25,7 @@ const Docker: FC<DockerProps> = (props) => {
 		const topMenu = useRef<HTMLDivElement>(null);
 
 		const [menuList, setMenuList] = useState({
-			activeMenuItem: 'backdrops',
+			activeMenuItem: 'shapes',
 			topMenulists: [
 				{
 					'name': 'Shapes',
@@ -56,7 +63,6 @@ const Docker: FC<DockerProps> = (props) => {
 				activeMenuIndicatorRef.current.style.top = -10 + 'px';
 			}
 		}
-
 
 		return (
 			<div className="sidebar">
