@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useState, useRef, FC } from "react";
+import { useState, useRef, FC, MutableRefObject } from "react";
 import classnames from 'classnames';
 
 /**
@@ -21,7 +21,7 @@ const Docker: FC<DockerProps> = (props) => {
 			isCollapsed,
 		} = props;
 
-		const activeMenuIndicatorRef = useRef<HTMLSpanElement>(null);
+		const activeMenuIndicatorRef : MutableRefObject<HTMLSpanElement | null> = useRef(null);
 		const topMenu = useRef<HTMLDivElement>(null);
 
 		const [menuList, setMenuList] = useState({

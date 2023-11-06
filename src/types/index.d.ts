@@ -1,37 +1,36 @@
 
 export type Position = {
-	X: number,
-	Y: number,
+	X: number;
+	Y: number;
 }
-
 export interface ElementInterface {
-	type?: string
-	name: string,
-	category: string,
+	type?: string;
+	name: string;
+	category: string;
 	attributes: {
-		position: Position,
+		position: Position;
 		size: {
-			width: string,
-			height: string,
+			width: string;
+			height: string;
 		}
 	},
-	id: string,
+	id: string;
 }
 export interface BackdropInterface {
-	backdrop: string,
-	category: string,
+	backdrop: string;
+	category: string;
 }
 
 export interface Design {
-	name: string,
-	elements: Element[]
+	name: string;
+	elements: Element[];
 }
 
 export interface ElementCard {
-	name: string,
-	title: string,
-	category: string,
-	attributes: object,
-	Component: React.JSX,
-	icon: React.JSX,
+	name: string;
+	title: string;
+	category: string;
+	attributes: object;
+	Component: React.JSX;
+	icon: React.JSX;
 }

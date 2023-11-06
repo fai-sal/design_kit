@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classNames from "classnames";
-import { useRef, FC } from "react";
+import { useRef, FC, CSSProperties, MutableRefObject } from "react";
 import { useDrop, DropTargetMonitor } from 'react-dnd';
 
 /**
@@ -15,9 +15,9 @@ import { useAppSelector } from "../../store/hooks"
 import { DRAGTYPES } from "../../configs/constants";
 
 const Canvas: FC = () => {
-	const canvasWrapper = useRef(null);
-	const elements = useAppSelector((state) => state.canvas.elements)
-	const design = useAppSelector((state) => state.canvas.design)
+	const canvasWrapper: MutableRefObject<HTMLDivElement | null> = useRef(null);
+	const elements = useAppSelector((state) => state.canvas.elements);
+	const design = useAppSelector((state) => state.canvas.design);
 
 	const [_, drop] = useDrop(() => ({
 		accept: [DRAGTYPES.ADD_ELEMENT, DRAGTYPES.MOVE_ELEMENT, "ADD_BACKDROP"],
@@ -33,7 +33,7 @@ const Canvas: FC = () => {
 		},
 	}));
 
-	const style: { [key: string]: string } = {};
+	const style: CSSProperties = {}
 
 	if (design.backdrop) {
 		style.backgroundImage = `url(${design.backdrop})`;
