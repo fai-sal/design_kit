@@ -10,11 +10,13 @@ import { useDrop, DropTargetMonitor } from 'react-dnd';
  */
 import Element from "./element"
 import { dropHandler } from "../../utils";
-import { ElementInterface } from "../../types"
-import { useAppSelector } from "../../store/hooks"
+import { ElementInterface } from "../../types";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { DRAGTYPES } from "../../configs/constants";
+import { updateSelectedId } from "../../features/meta";
 
 const Canvas: FC = () => {
+	const dispatcher = useAppDispatch();
 	const canvasWrapper: MutableRefObject<HTMLDivElement | null> = useRef(null);
 	const elements = useAppSelector((state) => state.canvas.elements);
 	const design = useAppSelector((state) => state.canvas.design);
@@ -45,9 +47,16 @@ const Canvas: FC = () => {
 		{ "has-backdrop": !!design.backdrop }
 	)
 
+	// handle Canvas click
+	const handleEditorClick = ( event: React.MouseEvent<HTMLDivElement> ) => {
+		event.preventDefault();
+		event.stopPropagation();
+		dispatcher(updateSelectedId('canvas'));
+	}
+
 	return (
 		<div className="content-body" ref={canvasWrapper}>
-			<div ref={drop} className={editoClasses} id="toolkit-editor" style={style}>
+			<div ref={drop} onClick={handleEditorClick} className={editoClasses} id="toolkit-editor" style={style}>
 				{
 					Object.keys(elements).map((key) => <Element data={elements[key]} key={elements[key].id} />)
 				}

@@ -280,11 +280,19 @@
 .toolkit-editor {
 
 	.element {
-		border: 1px solid green;
 		cursor: move;
 		position: absolute;
 		left: 0;
 		top: 0;
+		border: 1px solid transparent;
+
+		&:hover {
+			border: 1px solid #6180e4;
+		}
+
+		&.is-selected {
+			border: 1px solid #6180e4;
+		}
 	}
 
 	&.has-backdrop {

@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import classNames from "classnames";
 import { FC, useMemo } from "react"
 import { useDrag, DragSourceMonitor } from "react-dnd";
 
@@ -9,9 +10,10 @@ import { useDrag, DragSourceMonitor } from "react-dnd";
  */
 import { SHAPES } from "../../../elements/shapes";
 import { ElementInterface } from "../../../types";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { DRAGTYPES } from "../../../configs/constants";
 import { moveShape } from "../../../features/elements";
+import { updateSelectedId } from "../../../features/meta";
 
 interface DropResult {
 	item: ElementInterface;
@@ -36,6 +38,7 @@ const Element: FC<{
 	const style = useMemo(() => generateStyle(), [data.attributes]);
 
 	const dispatcher = useAppDispatch();
+	const selectedItem = useAppSelector((state) => state.canvas.meta.selectedItem);
 
 	const [_, drag] = useDrag({
 		type: DRAGTYPES.ADD_ELEMENT,
@@ -64,8 +67,18 @@ const Element: FC<{
 		},
 	});
 
+	/**
+	 * Select element on Click.
+	 */
+	const handleElmentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		event.preventDefault();
+		event.stopPropagation();
+		dispatcher(updateSelectedId(data.id));
+	}
+
+	const classes = classNames( 'element', { 'is-selected' : data.id === selectedItem})
 	return (
-		<div className="element" style={style} ref={drag}>
+		<div className={classes} style={style} ref={drag} onClick={handleElmentClick}>
 			{SHAPES[data.name as keyof typeof SHAPES].svg}
 		</div>
 	)
