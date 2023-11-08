@@ -63,6 +63,7 @@ const Element: FC<{
 						position: dropResult.position
 					}
 				));
+				dispatcher(updateSelectedId(item.id));
 			}
 		},
 	});
