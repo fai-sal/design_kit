@@ -9,6 +9,7 @@ import { useDrag, DragSourceMonitor } from "react-dnd";
  * Internal dependencies
  */
 import { SHAPES } from "../../../elements/shapes";
+import Outline from "./outline";
 import { ElementInterface } from "../../../types";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { DRAGTYPES } from "../../../configs/constants";
@@ -81,6 +82,7 @@ const Element: FC<{
 	return (
 		<div className={classes} style={style} ref={drag} onClick={handleElmentClick}>
 			{SHAPES[data.name as keyof typeof SHAPES].svg}
+			{ data.id === selectedItem && <Outline id={selectedItem} /> }
 		</div>
 	)
 }

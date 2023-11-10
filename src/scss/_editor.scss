@@ -30,3 +30,87 @@
 		}
 	}
 }
+
+
+.outline {
+
+	.size-control {
+		max-height: 100%;
+		max-width: 100%;
+		border-radius: 10px;
+		background-color: #fff;
+		border: 2px solid var(--selection-b);
+		pointer-events: all;
+		position: absolute;
+		pointer-events: auto;
+		cursor: ns-resize;
+		margin: auto;
+
+		&.left {
+			top: 0;
+			bottom: 0;
+			left: -3.5px;
+			height: 20px;
+			width: 6px;
+		}
+
+		&.right {
+			top: 0;
+			bottom: 0;
+			right: -3.5px;
+			height: 20px;
+			width: 6px;
+		}
+
+		&.top {
+			left: 0;
+			right: 0;
+			top: -3.5px;
+			height: 6px;
+			width: 20px;
+		}
+
+		&.bottom{
+			left: 0;
+			right: 0;
+			bottom: -3.5px;
+			height: 6px;
+			width: 20px;
+		}
+
+		&.corner {
+			z-index: 99;
+			border: 3px solid rgb(255, 255, 255);
+			background: rgb(62, 100, 222);
+			border-radius: 50%;
+			position: absolute;
+			user-select: none;
+			width: 16px;
+			height: 16px;
+		}
+
+		&.left-top {
+			left: -10px;
+			top: -10px;
+			cursor: nw-resize;
+		}
+
+		&.left-bottom {
+			left: -10px;
+			bottom: -10px;
+			cursor: sw-resize;
+		}
+
+		&.right-top {
+			right: -10px;
+			top: -10px;
+			cursor: ne-resize;
+		}
+
+		&.right-bottom {
+			right: -10px;
+			bottom: -10px;
+			cursor: se-resize;
+		}
+	}
+}
