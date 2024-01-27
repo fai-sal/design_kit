@@ -43,7 +43,6 @@
 		pointer-events: all;
 		position: absolute;
 		pointer-events: auto;
-		cursor: ns-resize;
 		margin: auto;
 
 		&.left {
@@ -52,6 +51,7 @@
 			left: -3.5px;
 			height: 20px;
 			width: 6px;
+			cursor: col-resize;
 		}
 
 		&.right {
@@ -60,6 +60,7 @@
 			right: -3.5px;
 			height: 20px;
 			width: 6px;
+			cursor: col-resize;
 		}
 
 		&.top {
@@ -68,6 +69,7 @@
 			top: -3.5px;
 			height: 6px;
 			width: 20px;
+			cursor: row-resize;
 		}
 
 		&.bottom{
@@ -76,6 +78,7 @@
 			bottom: -3.5px;
 			height: 6px;
 			width: 20px;
+			cursor: row-resize;
 		}
 
 		&.corner {

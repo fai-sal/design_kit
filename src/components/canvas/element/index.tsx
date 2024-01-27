@@ -32,8 +32,8 @@ const Element: FC<{
 	const generateStyle = () => {
 		return {
 			transform: `translate(${data.attributes.position.X}px, ${data.attributes.position.Y}px)`,
-			width: data.attributes.size.width,
-			height: data.attributes.size.height,
+			width: `${data.attributes.size.width}px`,
+			height: `${data.attributes.size.height}px`,
 		}
 	}
 	const style = useMemo(() => generateStyle(), [data.attributes]);

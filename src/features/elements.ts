@@ -5,8 +5,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ElementInterface, Position } from "../types"
 
 type MovedItem = {
-	position: Position,
-	id: string
+	position: Position;
+	id: string;
+}
+
+type UpdateSize = {
+	width? : number;
+	height? : number;
+	id: string;
 }
 const initialState: {
 	[key: string]: ElementInterface
@@ -25,8 +31,14 @@ export const elementSlice = createSlice({
 		moveShape: (state, action: PayloadAction<MovedItem>) => {
 			state[action.payload.id].attributes.position = action.payload.position;
 		},
+		updateSize: (state, action: PayloadAction<UpdateSize>) => {
+			state[action.payload.id].attributes.size ={
+				... state[action.payload.id].attributes.size, 
+				...action.payload.size,
+			}
+		},
 	}
 })
 
 export default elementSlice.reducer;
-export const { addShape, moveShape } = elementSlice.actions;
+export const { addShape, moveShape, updateSize } = elementSlice.actions;

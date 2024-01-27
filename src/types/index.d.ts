@@ -10,8 +10,8 @@ export interface ElementInterface {
 	attributes: {
 		position: Position;
 		size: {
-			width: string;
-			height: string;
+			width: number;
+			height: number;
 		}
 	},
 	id: string;
