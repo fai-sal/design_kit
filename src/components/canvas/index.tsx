@@ -21,7 +21,7 @@ const Canvas: FC = () => {
 	const elements = useAppSelector((state) => state.canvas.elements);
 	const design = useAppSelector((state) => state.canvas.design);
 
-	const [_, drop] = useDrop(() => ({
+	const [, drop] = useDrop(() => ({
 		accept: [DRAGTYPES.ADD_ELEMENT, DRAGTYPES.MOVE_ELEMENT, "ADD_BACKDROP"],
 		collect: (monitor) => ({
 			isOver: monitor.isOver(),
@@ -31,7 +31,6 @@ const Canvas: FC = () => {
 			if (item.type !== undefined) {
 				return dropHandler(item, monitor);
 			}
-
 		},
 	}));
 

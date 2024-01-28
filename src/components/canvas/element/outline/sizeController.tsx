@@ -6,8 +6,6 @@ import useDrag from "./useDrag";
 import { useAppSelector, useAppDispatch } from "../../../../store/hooks";
 import { updateSize, moveShape } from "../../../../features/elements";
 
-
-
 const SizeController: FC<{
 	id: string;
 }> = ({ id }) => {	
@@ -17,7 +15,7 @@ const SizeController: FC<{
 
 	const {width, height} = selectedElement.attributes.size;
 
-	const dragEndSetValue = (initialValue: number, v: number, identifier: number, direction: string) : void => {
+	const dragEndSetValue = (initialValue: number, v: number, identifier: string, direction: string) : void => {
 
 		dispatcher(updateSize(
 			{
@@ -29,7 +27,7 @@ const SizeController: FC<{
 			}
 		));
 
-		if( direction === "bottom-to-top") {
+		if( direction === "towards_top") {
 			dispatcher(moveShape(
 				{
 					id,
@@ -41,7 +39,7 @@ const SizeController: FC<{
 			));
 		}
 
-		if( direction === "right-to-left") {
+		if( direction === "towards_left") {
 			dispatcher(moveShape(
 				{
 					id,
@@ -55,8 +53,8 @@ const SizeController: FC<{
 
     };
 
-	const [handleMouseDownWidthLeft] = useDrag({
-        increase_direction: 'right-to-left',
+	const [onDragLeft] = useDrag({
+        increase_direction: 'towards_left',
         value: width,
         dragEndSetValue: dragEndSetValue,
         identifier: 'width',
@@ -64,8 +62,8 @@ const SizeController: FC<{
         cursor: 'ew-resize',
     });
 
-    const [handleMouseDownWidthRight] = useDrag({
-        increase_direction: 'left-to-right',
+    const [onDragRight] = useDrag({
+        increase_direction: 'towards_right',
         value: width,
         dragEndSetValue: dragEndSetValue,
         identifier: 'width',
@@ -73,8 +71,8 @@ const SizeController: FC<{
         cursor: 'ew-resize',
     });
 
-    const [handleMouseDownHeightTop] = useDrag({
-        increase_direction: 'bottom-to-top',
+    const [onDragTop] = useDrag({
+        increase_direction: 'towards_top',
         value: height,
         dragEndSetValue: dragEndSetValue,
         identifier: 'height',
@@ -82,40 +80,38 @@ const SizeController: FC<{
         cursor: 'ns-resize',
     });
 
-    const [handleMouseDownHeightBottom] = useDrag({
-        increase_direction: 'top-to-bottom',
+    const [onDragBottom] = useDrag({
+        increase_direction: 'towards_bottom',
         value: height,
         dragEndSetValue: dragEndSetValue,
         identifier: 'height',
         value_offset: 1,
         cursor: 'ns-resize',
     });
+
+	const onResize = (event: React.MouseEvent<HTMLSpanElement>) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		if(event.currentTarget.classList.contains("right")) {
+			onDragRight(event);
+		}else if(event.currentTarget.classList.contains("bottom")) {
+			onDragBottom(event);
+		}else if(event.currentTarget.classList.contains("left")) {
+			onDragLeft(event);
+		}else {
+			onDragTop(event);
+		}
+		
+	}
 
 	return (
 		<div className="size-control-wrapper">
-			<span className="size-control right" 
-			onMouseDown={(event)=> {
-				event.preventDefault();
-				event.stopPropagation();
-				handleMouseDownWidthRight(event);
-			}
-			}
-				></span>
-			<span className="size-control bottom" onMouseDown={(event)=>{
-				event.preventDefault();
-				event.stopPropagation();
-				handleMouseDownHeightBottom(event)
-			}}></span>
-			<span className="size-control left" onMouseDown={(event)=>{
-				event.preventDefault();
-				event.stopPropagation();
-				handleMouseDownWidthLeft(event)
-			}}></span>
-			<span className="size-control top" onMouseDown={(event)=>{
-				event.preventDefault();
-				event.stopPropagation();
-				handleMouseDownHeightTop(event)
-			}}></span>
+			<span className="size-control right" onMouseDown={onResize} />
+			<span className="size-control left" onMouseDown={onResize} />
+			<span className="size-control top" onMouseDown={onResize} />
+			<span className="size-control bottom" onMouseDown={onResize} />
+
 			<span className="size-control corner left-top"></span>
 			<span className="size-control corner right-top"></span>
 			<span className="size-control corner left-bottom"></span>

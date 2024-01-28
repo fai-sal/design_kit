@@ -24,6 +24,17 @@ interface DropResult {
 		Y: number;
 	};
 }
+interface DraggedItem { 
+	type: string;
+	category: string;
+	name: string;
+	id: string;
+	attributes: {
+		size: {
+			width: number;
+			height: number;
+		} 
+} }
 
 const Element: FC<{
 	data: ElementInterface
@@ -40,9 +51,8 @@ const Element: FC<{
 
 	const dispatcher = useAppDispatch();
 	const ID = useAppSelector((state) => state.canvas.meta.selectedItem);
-	// const selectedElement = useAppSelector((state) => state.canvas.elements[ID]);
 
-	const [_, drag] = useDrag({
+	const [{initialCORD, finalCORD}, drag] = useDrag({
 		type: DRAGTYPES.ADD_ELEMENT,
 		item: {
 			type: DRAGTYPES.ADD_ELEMENT,
@@ -55,16 +65,30 @@ const Element: FC<{
 		},
 		collect: (monitor: DragSourceMonitor) => ({
 			isDragging: monitor.isDragging(),
+			initialCORD: monitor.getInitialClientOffset(),
+			finalCORD: monitor.getSourceClientOffset(),
 		}),
-		end: (item: ElementInterface, monitor: DragSourceMonitor) => {
+		end: (item: DraggedItem, monitor: DragSourceMonitor) => {
 			const dropResult: DropResult | null = monitor.getDropResult();
 			if (dropResult) {
-				dispatcher(moveShape(
-					{
-						id: item.id,
-						position: dropResult.position
-					}
-				));
+
+				if( !!initialCORD && !!finalCORD){
+					const deltaX = initialCORD.x - finalCORD.x;
+					const deltaY = initialCORD.y - finalCORD.y;
+
+					dispatcher(moveShape(
+						{
+							id: item.id,
+							position: {
+								X: dropResult.position.X - deltaX,
+								Y: dropResult.position.Y - deltaY,
+
+							}
+						}
+					));
+				}
+
+
 				dispatcher(updateSelectedId(item.id));
 			}
 		},
