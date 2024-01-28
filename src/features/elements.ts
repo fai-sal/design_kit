@@ -10,8 +10,10 @@ type MovedItem = {
 }
 
 type UpdateSize = {
-	width? : number;
-	height? : number;
+	size: {
+		width: number;
+		height: number;
+	};
 	id: string;
 }
 const initialState: {
@@ -32,7 +34,7 @@ export const elementSlice = createSlice({
 			state[action.payload.id].attributes.position = action.payload.position;
 		},
 		updateSize: (state, action: PayloadAction<UpdateSize>) => {
-			state[action.payload.id].attributes.size ={
+			state[action.payload.id].attributes.size = {
 				... state[action.payload.id].attributes.size, 
 				...action.payload.size,
 			}

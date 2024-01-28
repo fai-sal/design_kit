@@ -39,7 +39,8 @@ const Element: FC<{
 	const style = useMemo(() => generateStyle(), [data.attributes]);
 
 	const dispatcher = useAppDispatch();
-	const selectedItem = useAppSelector((state) => state.canvas.meta.selectedItem);
+	const ID = useAppSelector((state) => state.canvas.meta.selectedItem);
+	// const selectedElement = useAppSelector((state) => state.canvas.elements[ID]);
 
 	const [_, drag] = useDrag({
 		type: DRAGTYPES.ADD_ELEMENT,
@@ -55,7 +56,7 @@ const Element: FC<{
 		collect: (monitor: DragSourceMonitor) => ({
 			isDragging: monitor.isDragging(),
 		}),
-		end: (item: any, monitor: DragSourceMonitor) => {
+		end: (item: ElementInterface, monitor: DragSourceMonitor) => {
 			const dropResult: DropResult | null = monitor.getDropResult();
 			if (dropResult) {
 				dispatcher(moveShape(
@@ -78,11 +79,11 @@ const Element: FC<{
 		dispatcher(updateSelectedId(data.id));
 	}
 
-	const classes = classNames( 'element', { 'is-selected' : data.id === selectedItem})
+	const classes = classNames( 'element', { 'is-selected' : data.id === ID})
 	return (
 		<div className={classes} style={style} ref={drag} onClick={handleElmentClick}>
 			{SHAPES[data.name as keyof typeof SHAPES].svg}
-			{ data.id === selectedItem && <Outline id={selectedItem} /> }
+			{ data.id === ID && <Outline id={ID} /> }
 		</div>
 	)
 }
