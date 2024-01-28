@@ -27,25 +27,18 @@ const SizeController: FC<{
 			}
 		));
 
-		if( direction === "towards_top") {
+		if( direction === "towards_top" || direction === "towards_left" ) {
 			dispatcher(moveShape(
 				{
 					id,
 					position: {
 						...selectedElement.attributes.position,
-						Y: selectedElement.attributes.position.Y + (initialValue - v),
-					}
-				}
-			));
-		}
-
-		if( direction === "towards_left") {
-			dispatcher(moveShape(
-				{
-					id,
-					position: {
-						...selectedElement.attributes.position,
-						X: selectedElement.attributes.position.X + (initialValue - v),
+						...(direction === "towards_top" && {
+							Y: selectedElement.attributes.position.Y + (initialValue - v),
+						}),
+						...(direction === "towards_left" && {
+							X: selectedElement.attributes.position.X + (initialValue - v),
+						})
 					}
 				}
 			));
